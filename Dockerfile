@@ -16,6 +16,9 @@ RUN npm install -g bower
 RUN npm install -g ember-cli
 RUN apt-get install -y phantomjs
 
+# Java
+RUN apt-get install -y openjdk-7-jre
+
 VOLUME ["/home/docker/.ssh"]
 
 EXPOSE 22
