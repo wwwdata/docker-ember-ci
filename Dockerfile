@@ -2,7 +2,7 @@ FROM dockerfile/nodejs
 
 RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
-RUN useradd docker -G sudo
+RUN useradd docker -G sudo -d /home/docker -m
 # sudo without password
 RUN echo "docker ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 # SSH login fix. Otherwise user is kicked off after login
