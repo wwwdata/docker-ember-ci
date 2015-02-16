@@ -22,5 +22,6 @@ RUN apt-get install -y openjdk-7-jre
 VOLUME ["/home/docker/.ssh"]
 
 EXPOSE 22
+EXPOSE 9000
 CMD ["/usr/sbin/sshd", "-D"]
 
