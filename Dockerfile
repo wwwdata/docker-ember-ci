@@ -20,6 +20,7 @@ RUN apt-get install -y phantomjs
 RUN apt-get install -y openjdk-7-jre
 
 VOLUME ["/home/docker/.ssh"]
+VOLUME ["/data"]
 
 EXPOSE 22
 EXPOSE 9000
