@@ -1,5 +1,7 @@
-FROM dockerfile/nodejs
+FROM node
 
+# add backports
+RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list
 RUN apt-get update && apt-get install -y openssh-server
 RUN mkdir /var/run/sshd
 RUN useradd docker -G sudo -d /home/docker -m
@@ -11,13 +13,8 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-# Bower an ember stuff
-RUN npm install -g bower
-RUN npm install -g ember-cli
-RUN apt-get install -y phantomjs
-
 # Java
-RUN apt-get install -y openjdk-7-jre
+RUN apt-get -t jessie-backports -y install openjdk-8-jre-headless
 
 VOLUME ["/home/docker/.ssh"]
 VOLUME ["/data"]
